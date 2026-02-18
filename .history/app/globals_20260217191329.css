@@ -102,5 +102,28 @@
   .card-elevated {
     @apply bg-card text-card-foreground rounded-2xl shadow-xl border border-border;
   }
+}
+  .rain-line {
+    position: absolute;
+    top: -20%;
+    width: 2px;
+    height: 120%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      #FFEB3B,
+      #C2410C,
+      transparent
+    );
+    opacity: 0.15;
+    animation: rainFall 6s linear infinite;
+  }
 
+  @keyframes rainFall {
+    0% {
+      transform: translateY(-20%);
+    }
+    100% {
+      transform: translateY(20%);
+    }
   }

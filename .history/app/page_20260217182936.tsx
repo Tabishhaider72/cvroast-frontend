@@ -10,8 +10,6 @@ import ResumeDropzone from "@/components/resume/ResumeDropzone";
 import Preloader from "@/components/Preloader";
 import { uploadResume } from "@/lib/api";
 import { ResumeRoastResponse } from "@/types/resume";
-import Footer from "@/components/Footer";
-
 
 interface ApiErrorResponse {
   message: string;
@@ -21,8 +19,8 @@ export default function LandingPage() {
   const router = useRouter();
 
   const [file, setFile] = useState<File | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleUpload = async () => {
     if (!file) {
@@ -41,8 +39,8 @@ export default function LandingPage() {
       if (axios.isAxiosError(err)) {
         const axiosError = err as AxiosError<ApiErrorResponse>;
         setError(
-          axiosError.response?.data?.message ??
-          "Failed to analyze resume."
+          axiosError.response?.data?.message ||
+            "Failed to analyze resume."
         );
       } else {
         setError("Unexpected error occurred.");
@@ -64,8 +62,8 @@ export default function LandingPage() {
           <Image
             src="/thinker1.png"
             alt="left illustration"
-            width={800}
-            height={800}
+            width={600}
+            height={600}
             className="object-contain"
             priority
           />
@@ -77,7 +75,7 @@ export default function LandingPage() {
             src="/thinker2.png"
             alt="right illustration"
             width={800}
-            height={800}
+            height={600}
             className="object-contain"
             priority
           />
@@ -86,6 +84,7 @@ export default function LandingPage() {
         {/* Center Content */}
         <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 pt-20 sm:pt-24">
 
+          {/* Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-6 max-w-4xl">
             Is Your Resume Ready to Impress?
           </h1>
@@ -107,7 +106,6 @@ export default function LandingPage() {
                 Drag & drop your file here or click to browse
               </p>
 
-              {/* Updated Dropzone */}
               <ResumeDropzone onFileSelect={setFile} />
 
               <p className="text-xs mt-6 opacity-60">
@@ -130,7 +128,6 @@ export default function LandingPage() {
 
         </div>
       </main>
-      <Footer />
     </>
   );
 }

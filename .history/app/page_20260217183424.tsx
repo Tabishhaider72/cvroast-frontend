@@ -10,8 +10,6 @@ import ResumeDropzone from "@/components/resume/ResumeDropzone";
 import Preloader from "@/components/Preloader";
 import { uploadResume } from "@/lib/api";
 import { ResumeRoastResponse } from "@/types/resume";
-import Footer from "@/components/Footer";
-
 
 interface ApiErrorResponse {
   message: string;
@@ -130,7 +128,6 @@ export default function LandingPage() {
 
         </div>
       </main>
-      <Footer />
     </>
   );
 }

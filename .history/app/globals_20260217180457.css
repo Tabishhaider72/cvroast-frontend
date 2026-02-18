@@ -102,5 +102,4 @@
   .card-elevated {
     @apply bg-card text-card-foreground rounded-2xl shadow-xl border border-border;
   }
-
-  }
+}
